@@ -36,4 +36,15 @@ Generated files and build output are excluded by `.gitignore`.
 
 ## Disclaimer
 
+This project is currently configured for Escape from Tarkov. It may be adapted for other games that use PhysX, but game-specific offsets and data structures must be updated first. At minimum, update the PhysX SDK offset and rigid actors offset.
+
+Other likely updates include:
+
+- How camera information is located and read
+- Camera position, view, and projection data structures
+- Module names and game process initialization
+- PhysX world or scene pointers
+- Entity, transform, and player data offsets
+- Any game-specific validation or filtering logic
+
 Use this project only with software and systems you own or have permission to inspect. Follow the applicable software terms, game rules, and laws.
