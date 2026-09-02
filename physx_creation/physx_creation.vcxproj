@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4801b79b-926f-4d14-8212-41a5dcc638c8}</ProjectGuid>
+    <RootNamespace>physxcreation</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <MemoryUseWindowsRpm Condition="'$(MemoryUseWindowsRpm)' == ''">0</MemoryUseWindowsRpm>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;MEMORY_USE_WINDOWS_RPM=$(MemoryUseWindowsRpm);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>embree4.lib;tbb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\embree4.dll" "$(OutDir)embree4.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbb12.dll" "$(OutDir)tbb12.dll"
+ copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbbmalloc.dll" "$(OutDir)tbbmalloc.dll"
+ if "$(MemoryUseWindowsRpm)"=="0" copy /Y "$(USERPROFILE)\Documents\physx_creation_old\x64\$(Configuration)\vmm.dll" "$(OutDir)vmm.dll"
+ if "$(MemoryUseWindowsRpm)"=="0" copy /Y "$(USERPROFILE)\Documents\physx_creation_old\x64\$(Configuration)\leechcore.dll" "$(OutDir)leechcore.dll"</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;MEMORY_USE_WINDOWS_RPM=$(MemoryUseWindowsRpm);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>embree4.lib;tbb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\embree4.dll" "$(OutDir)embree4.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbb12.dll" "$(OutDir)tbb12.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbbmalloc.dll" "$(OutDir)tbbmalloc.dll"</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;MEMORY_USE_WINDOWS_RPM=$(MemoryUseWindowsRpm);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>embree4.lib;tbb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\embree4.dll" "$(OutDir)embree4.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbb12.dll" "$(OutDir)tbb12.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbbmalloc.dll" "$(OutDir)tbbmalloc.dll"</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;MEMORY_USE_WINDOWS_RPM=$(MemoryUseWindowsRpm);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>embree4.lib;tbb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\embree4.dll" "$(OutDir)embree4.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbb12.dll" "$(OutDir)tbb12.dll"
+copy /Y "$(USERPROFILE)\Documents\physx_creation_old\physx_recreation\dependencies\embree-4.4.1.x64.windows\bin\tbbmalloc.dll" "$(OutDir)tbbmalloc.dll"</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="camera\camera.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_draw.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_tables.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="dependencies\logging\logging.cpp" />
+    <ClCompile Include="memory\memory.cpp" />
+    <ClCompile Include="physx\physx.cpp" />
+    <ClCompile Include="physx_creation.cpp" />
+    <ClCompile Include="renderer\renderer.cpp" />
+    <ClCompile Include="renderer\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="camera\camera.h" />
+    <ClInclude Include="dependencies\imgui\imconfig.h" />
+    <ClInclude Include="dependencies\imgui\imgui.h" />
+    <ClInclude Include="dependencies\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="dependencies\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="dependencies\imgui\imgui_internal.h" />
+    <ClInclude Include="dependencies\imgui\imstb_rectpack.h" />
+    <ClInclude Include="dependencies\imgui\imstb_textedit.h" />
+    <ClInclude Include="dependencies\imgui\imstb_truetype.h" />
+    <ClInclude Include="dependencies\imgui\stb_image.h" />
+    <ClInclude Include="dependencies\fonts\visitor.h" />
+    <ClInclude Include="dependencies\logging\logging.h" />
+    <ClInclude Include="memory\libs\leechcore.h" />
+    <ClInclude Include="memory\libs\vmmdll.h" />
+    <ClInclude Include="memory\memory.h" />
+    <ClInclude Include="physx\physx.h" />
+    <ClInclude Include="physx\physx_types.h" />
+    <ClInclude Include="renderer\renderer.h" />
+    <ClInclude Include="renderer\window.h" />
+    <ClInclude Include="security\signature.h" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MemoryUseWindowsRpm)' != '1'">
+    <Library Include="memory\libs\leechcore.lib" />
+    <Library Include="memory\libs\vmm.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Target Name="DeployFpgaRuntime" AfterTargets="Build">
+    <Copy SourceFiles="$(USERPROFILE)\Documents\physx_creation_old\x64\$(Configuration)\vmm.dll" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="Exists('$(USERPROFILE)\Documents\physx_creation_old\x64\$(Configuration)\vmm.dll')" />
+    <Copy SourceFiles="$(USERPROFILE)\Documents\physx_creation_old\x64\$(Configuration)\leechcore.dll" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="Exists('$(USERPROFILE)\Documents\physx_creation_old\x64\$(Configuration)\leechcore.dll')" />
+  </Target>
+</Project>
